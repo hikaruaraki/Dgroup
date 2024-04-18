@@ -1,0 +1,101 @@
+<html lang="jp">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>学生情報</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+
+<body>
+	<header>
+		<!-- Fixed navbar -->
+		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="/"></a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+					aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarCollapse">
+					<ul class="navbar-nav me-auto mb-2 mb-md-0">
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="/">top</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/student">学生情報</a>
+						</li>
+						<li class="nav-item">
+            				<a class="nav-link" href="/subject">科目</a>
+
+          				</li>
+          				<li class="nav-item">
+            				<a class="nav-link" href="/test">成績</a>
+
+          				</li>
+					</ul>
+				
+				</div>
+			</div>
+		</nav>
+	</header>
+
+     <h2>学生情報変更</h2>
+        <form th:action="@{/student/update}" th:object="${student}" method="post">
+            <input type="hidden" th:field="*{ID}">
+            <div class="form-group row">
+                <label for="entYear" class="col-sm-2 col-form-label">入学年度</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="ENT_YEAR" name="ENT_YEAR" th:value="${student.ENT_YEAR}" readonly>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="studentNo" class="col-sm-2 col-form-label">学生番号</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="NO" name="NO" th:value="${student.NO}" readonly>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="studentName" class="col-sm-2 col-form-label">学生氏名</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="NAME" name="NAME" th:value="${student.NAME}" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="CLASS_NUM" class="col-sm-2 col-form-label">クラス</label>
+                <div class="col-sm-10">
+                    <select id="CLASS_NUM" name="CLASS_NUM" class="form-control" th:value="${CLASS_NUM}">
+                        <option value="101">101</option>
+                        <option value="102">102</option>
+                        <option value="103">103</option>
+                        <option value="201">201</option>
+                        <option value="202">202</option>
+                        <option value="203">203</option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-2">在学中</div>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="IS_ATTEND" name="IS_ATTEND" th:checked="${student.IS_ATTEND}">
+                        <label class="form-check-label" for="IS_ATTEND">在学中</label>
+                    </div>
+                </div>
+            </div>
+            
+     <!--削除-->
+            <div>
+				<a th:href="@{/student/delete(id=*{ID})}">削除</a>
+			</div>
+            
+            <div class="form-group row">
+                <div class="col-sm-10 offset-sm-2">
+                    <button type="submit" class="btn btn-primary">変更する</button>
+                </div>
+            </div>
+        </form>
+        <a href="/student">戻る</a>
+    </div>
