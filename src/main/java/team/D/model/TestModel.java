@@ -15,15 +15,12 @@ public class TestModel {
 	 @Column(length = 10, nullable = true)
 	 private String STUDENT_CD;
 	 
-	 @Id
 	 @Column(length = 10, nullable = true)
 	 private String SUBJECT_CD;
 	 
-	 @Id
 	 @Column(length = 10, nullable = true)
 	 private String SCHOOL_CD;
 	 
-	 @Id
 	 @Column(length = 10, nullable = true)
 	 private Integer NO;
 	 

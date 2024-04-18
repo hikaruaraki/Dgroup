@@ -16,14 +16,14 @@ public class SubjectModel {
 	 @Id
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 @Column
-	 private Long ID;
+	 private Long id;
 	
 	@Column(length = 10, nullable = true)
-	 private String SCHOOL_CD;
+	 private String schoolcd;
 	 
 	 @Column(length = 10, nullable = true)
-	 private String CD;
+	 private String pw;
 	 
 	 @Column(length = 10, nullable = true)
-	 private String NAME;
+	 private String name;
 }
