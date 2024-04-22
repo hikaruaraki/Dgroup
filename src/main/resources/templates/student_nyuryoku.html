@@ -50,21 +50,21 @@
 	<!--学生番号-->
 			<form class="form py-4 needs-validation h-adr" method="post" th:action="@{/student/nyuryoku}" th:object="${studentmodel}">
 				<div class="row mt-3">
-					<label for="NO" class="col-4 col-form-label text-end">学生番号</label>
+					<label for="no" class="col-4 col-form-label text-end">学生番号</label>
 					<div class="col-4">
-						<input type="text" class="form-control" id="NO" name="NO" th:field="*{NO}" placeholder="2347***"
-							th:classappend="${#fields.hasErrors('NO')} ? 'is-invalid' : 'is-valid'" />
-						<div th:if="${#fields.hasErrors('NO')}" th:errors="*{NO}" class="invalid-feedback">
+						<input type="text" class="form-control" id="no" name="no" th:field="*{no}" placeholder="2347***"
+							th:classappend="${#fields.hasErrors('no')} ? 'is-invalid' : 'is-valid'" />
+						<div th:if="${#fields.hasErrors('no')}" th:errors="*{NO}" class="invalid-feedback">
 							errors!</div>
 					</div>
 			
 	<!--学生名-->
 				<div class="row mt-3">
-					<label for="NAME" class="col-4 col-form-label text-end">学生名</label>
+					<label for="name" class="col-4 col-form-label text-end">学生名</label>
 					<div class="col-4">
-						<input type="text" class="form-control" id="NAME" name="NAME" th:field="*{NAME}" placeholder="山田　太郎"
-							th:classappend="${#fields.hasErrors('NAME')} ? 'is-invalid' : 'is-valid'" />
-						<div th:if="${#fields.hasErrors('NAME')}" th:errors="*{NAME}" class="invalid-feedback">
+						<input type="text" class="form-control" id="name" name="name" th:field="*{name}" placeholder="山田　太郎"
+							th:classappend="${#fields.hasErrors('name')} ? 'is-invalid' : 'is-valid'" />
+						<div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="invalid-feedback">
 							errors!</div>
 					</div>
 				</div>
@@ -72,9 +72,9 @@
 	<!--入学年度-->
 
 			<div class="row mt-3">
-					<label for="ENT_YEAR" class="col-4 col-form-label text-end">入学年度</label>
+					<label for="entyear" class="col-4 col-form-label text-end">入学年度</label>
 					<div class="col-4">
-			<select class="form-control" name="ENT_YEAR">
+			<select class="form-control" name="entyear">
 				<option value="2021">2021年</option>
 				<option value="2022">2022年</option>
 				<option value="2023">2023年</option>
@@ -88,7 +88,7 @@
 			<div class="row mt-3">
 					<label for="CLASS_NUM" class="col-4 col-form-label text-end">クラス番号</label>
 					<div class="col-4">
-			<select class="form-control" name="CLASS_NUM">
+			<select class="form-control" name="classnum">
 				<option value="101">101</option>
 				<option value="102">102</option>
 				<option value="103">103</option>
@@ -97,7 +97,7 @@
 				<option value="203">203</option>
 	<!--在学中フラグ-->
 	<div>
-		<input type="hidden" id="IS_ATTEND" name="IS_ATTEND"th:value="true">
+		<input type="hidden" id="isattend" name="isattend"th:value="true">
 	</div>
 
 			</select> 

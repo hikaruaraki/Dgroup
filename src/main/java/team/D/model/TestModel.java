@@ -8,25 +8,25 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="testtable")
+@Table(name="test")
 public class TestModel {
 	
 	 @Id
-	 @Column(length = 10, nullable = true)
-	 private String STUDENT_CD;
+	 @Column(name="STUDENT_CD" ,length = 10, nullable = true)
+	 private String studentcd;
 	 
-	 @Column(length = 10, nullable = true)
-	 private String SUBJECT_CD;
+	 @Column(name="SUBJECT_CD" ,length = 10, nullable = true)
+	 private String subjectcd;
 	 
-	 @Column(length = 10, nullable = true)
-	 private String SCHOOL_CD;
+	 @Column(name="SCHOOL_CD" ,length = 10, nullable = true)
+	 private String schoolcd;
 	 
-	 @Column(length = 10, nullable = true)
-	 private Integer NO;
+	 @Column(name="NO" ,length = 10, nullable = true)
+	 private Integer no;
 	 
-	 @Column(length = 10, nullable = true)
-	 private Integer POINT;
+	 @Column(name="POINT" ,length = 10, nullable = true)
+	 private Integer point;
 	 
-	 @Column(length = 10, nullable = true)
-	 private String CLASS_NUM;
+	 @Column(name="CLASS_NUM" ,length = 10, nullable = true)
+	 private String classnum;
 }

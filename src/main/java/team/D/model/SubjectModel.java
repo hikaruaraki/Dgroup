@@ -13,17 +13,18 @@ import lombok.Data;
 @Table(name="subjecttable")
 public class SubjectModel {
 	
+	
 	 @Id
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 @Column
 	 private Long id;
 	
-	@Column(length = 10, nullable = true)
+	@Column(name="SCHOOL_CD",length = 10, nullable = true)
 	 private String schoolcd;
 	 
-	 @Column(length = 10, nullable = true)
-	 private String pw;
+	 @Column(name="CD" ,length = 10, nullable = true)
+	 private String cd;
 	 
-	 @Column(length = 10, nullable = true)
+	 @Column(name="NAME" ,length = 10, nullable = true)
 	 private String name;
 }

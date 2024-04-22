@@ -1,5 +1,7 @@
 package team.D.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,7 +39,8 @@ public class MainController{
 	  
 		@GetMapping("/student")
 		public String student(Model model) {
-			model.addAttribute("list",this.StudentService.getStudentModelList());
+			List<StudentModel> list = StudentService.getStudentModelList();
+			model.addAttribute("list",list);
 			return "student";
 		}
 //    学生情報入力
@@ -79,13 +82,13 @@ public class MainController{
     //学生情報の削除
     @GetMapping("/student/delete")
     public String deleteStudent(Model model,StudentModel studentmodel) {
-    	StudentService.delete(studentmodel.getID());
+    	StudentService.delete(studentmodel.getId());
     	return "/student";
     }
     
     @PostMapping("/student/delete")
     public String delete(Model model,StudentModel studentmodel) {
-    	this.StudentService.delete(studentmodel.getID());
+    	this.StudentService.delete(studentmodel.getId());
     	return "/student";
     }
 }

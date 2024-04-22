@@ -33,7 +33,7 @@ public List<TestModel> getTestModelList() {
 	 * @param @NonNull Long index
 	 * @return  AddressBook
 	 */
-	public TestModel get(@NonNull Long index) {
+	public TestModel get(@NonNull String index) {
 		TestModel testmodel = this.testrepository.findById(index).orElse(new TestModel());
 		return testmodel;
 	}
@@ -51,7 +51,7 @@ public List<TestModel> getTestModelList() {
 	 * アドレス帳データの削除
 	 * @param @NonNull Long index
 	 */
-	public void delete(@NonNull Long index) {
+	public void delete(@NonNull String index) {
 		this.testrepository.deleteById(index);
 	}
 	
@@ -61,7 +61,7 @@ public List<TestModel> getTestModelList() {
     }
  
     // 生徒IDで生徒情報を取得するメソッド
-    public TestModel getById(Long id) {
+    public TestModel getById(String id) {
         Optional<TestModel> optionalStudent = testrepository.findById(id);
         return optionalStudent.orElse(null);
     }

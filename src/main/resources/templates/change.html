@@ -43,29 +43,29 @@
 
      <h2>学生情報変更</h2>
         <form th:action="@{/student/update}" th:object="${student}" method="post">
-            <input type="hidden" th:field="*{ID}">
+            <input type="hidden" th:field="*{id}">
             <div class="form-group row">
                 <label for="entYear" class="col-sm-2 col-form-label">入学年度</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="ENT_YEAR" name="ENT_YEAR" th:value="${student.ENT_YEAR}" readonly>
+                    <input type="text" class="form-control" id="entyear" name="entyear" th:value="${entyear}" readonly>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="studentNo" class="col-sm-2 col-form-label">学生番号</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="NO" name="NO" th:value="${student.NO}" readonly>
+                    <input type="text" class="form-control" id="no" name="no" th:value="${student.no}" readonly>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="studentName" class="col-sm-2 col-form-label">学生氏名</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="NAME" name="NAME" th:value="${student.NAME}" required>
+                    <input type="text" class="form-control" id="name" name="name" th:value="${student.name}" required>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="CLASS_NUM" class="col-sm-2 col-form-label">クラス</label>
+                <label for="classnum" class="col-sm-2 col-form-label">クラス</label>
                 <div class="col-sm-10">
-                    <select id="CLASS_NUM" name="CLASS_NUM" class="form-control" th:value="${CLASS_NUM}">
+                    <select id="classnum" name="classnum" class="form-control" th:value="${classnum}">
                         <option value="101">101</option>
                         <option value="102">102</option>
                         <option value="103">103</option>
@@ -80,15 +80,15 @@
                 <div class="col-sm-2">在学中</div>
                 <div class="col-sm-10">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="IS_ATTEND" name="IS_ATTEND" th:checked="${student.IS_ATTEND}">
-                        <label class="form-check-label" for="IS_ATTEND">在学中</label>
+                        <input class="form-check-input" type="checkbox" id="isattend" name="isattend" th:checked="${isattend}">
+                        <label class="form-check-label" for="isattend">在学中</label>
                     </div>
                 </div>
             </div>
             
      <!--削除-->
             <div>
-				<a th:href="@{/student/delete(id=*{ID})}">削除</a>
+				<a th:href="@{/student/delete(id=*{id})}">削除</a>
 			</div>
             
             <div class="form-group row">

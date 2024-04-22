@@ -52,30 +52,19 @@
 				<div class="row mt-3">
 					<label for="CD" class="col-4 col-form-label text-end">科目コード</label>
 					<div class="col-4">
-						<input type="text" class="form-control" id="CD" name="CD" th:field="*{CD}" placeholder="科目コードを入力して下さい"
-							th:classappend="${#fields.hasErrors('CD')} ? 'is-invalid' : 'is-valid'" />
-						<div th:if="${#fields.hasErrors('CD')}" th:errors="*{CD}" class="invalid-feedback">
-							errors!</div>
+						<input type="text" class="form-control" id="cd" name="cd" placeholder="科目コードを入力して下さい" />
 					</div>
-			
 	<!--科目名-->
 				<div class="row mt-3">
-					<label for="NAME" class="col-4 col-form-label text-end">科目名</label>
+					<label for="name" class="col-4 col-form-label text-end">科目名</label>
 					<div class="col-4">
-						<input type="text" class="form-control" id="NAME" name="NAME" th:field="*{NAME}" placeholder="科目名を入力してください"
-							th:classappend="${#fields.hasErrors('NAME')} ? 'is-invalid' : 'is-valid'" />
-						<div th:if="${#fields.hasErrors('NAME')}" th:errors="*{NAME}" class="invalid-feedback">
-							errors!</div>
-					</div>
+						<input type="text" class="form-control" id="name" name="name" placeholder="科目名を入力してください" />
 				</div>
 				
 				<div class="row mt-3">
-					<label for="SCHOOL_CD" class="col-4 col-form-label text-end">学校コード</label>
+					<label for="schoolcd" class="col-4 col-form-label text-end">学校コード</label>
 					<div class="col-4">
-						<input type="text" class="form-control" id="SCHOOL_CD" name="SCHOOL_CD" th:field="*{SCHOOL_CD}" placeholder="学校コード"
-							th:classappend="${#fields.hasErrors('SCHOOL_CD')} ? 'is-invalid' : 'is-valid'" />
-						<div th:if="${#fields.hasErrors('SCHOOL_CD')}" th:errors="*{SCHOOL_CD}" class="invalid-feedback">
-							errors!</div>
+						<input type="text" class="form-control" id="schoolcd" name="schoolcd" placeholder="学校コード" />
 					</div>
 			
 

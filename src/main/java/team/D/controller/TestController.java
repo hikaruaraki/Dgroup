@@ -50,7 +50,7 @@ public class TestController{
 
    // 科目の変更フォームを表示
 	@GetMapping("/test/update")
-	public String showUpdateTestForm(@RequestParam Long id, Model model) {
+	public String showUpdateTestForm(@RequestParam String id, Model model) {
 		TestModel test = TestService.getById(id);
 		model.addAttribute("test", test);
 		return "test/change";
@@ -64,7 +64,7 @@ public class TestController{
 }
 
 		@GetMapping("/test/delete")
-		public String testdelete(Model model,Long id) {
+		public String testdelete(Model model,String id) {
 		this.TestService.delete(id);
 		return "redirect:/test";
 }
