@@ -57,10 +57,13 @@
 			</thead>
 			<tbody>
 				<tr class="align-middle" th:each="subjectmodel, stat : ${sub}" th:object="${subjectmodel}">
-					<td th:text="*{SCHOOL_CD}"></td>
-					<td th:text="*{CD}"></td>
-					<td th:text="*{NAME}"></td>
-					<td><a th:href="@{/subject/update(id=*{ID})}">編集</a></td>	
+					
+					<td th:text="*{id}"></td>
+					<td th:text="*{schoolcd}"></td>
+					<td th:text="*{cd}"></td>
+					<td th:text="*{name}"></td>
+					
+					<td><a th:href="@{/subject/update(id=*{id})}">編集</a></td>	
 							
 					
 					
