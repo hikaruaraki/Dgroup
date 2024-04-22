@@ -65,4 +65,25 @@ public class StudentService {
         Optional<StudentModel> optionalStudent = studentrepository.findById(id);
         return optionalStudent.orElse(null);
     }
+    
+    public List<StudentModel> searchStudents(Integer entYear, String classNum, Boolean isAttend) {
+        if (entYear != null && classNum != null && isAttend != null) {
+        	System.out.println(entYear + classNum + isAttend);
+            return this.studentrepository.findByEntYearAndClassNumAndIsAttend(entYear, classNum, isAttend); // 全ての条件を指定
+        } if (entYear != null && classNum != null) {
+            return this.studentrepository.findByEntYearAndClassNum(entYear, classNum); // 入学年度とクラス番号を指定
+        } else if (entYear != null && isAttend != null) {
+            return this.studentrepository.findByEntYearAndIsAttend(entYear, isAttend); // 入学年度と出席状況を指定
+        } else if (classNum != null && isAttend != null) {
+            return this.studentrepository.findByClassNumAndIsAttend(classNum, isAttend); // クラス番号と出席状況を指定
+        } else if (entYear != null) {
+            return this.studentrepository.findByEntYear(entYear); // 入学年度のみを指定
+        } else if (classNum != null) {
+            return this.studentrepository.findByClassNum(classNum); // クラス番号のみを指定
+        } else if (isAttend != null) {
+            return this.studentrepository.findByIsAttend(isAttend); // 出席状況のみを指定
+        } else {
+            return this.studentrepository.findAll(); // すべての学生を取得
+        }
+    }
 }

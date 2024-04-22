@@ -50,22 +50,49 @@
 	<!--科目コード-->
 			<form class="form py-4 needs-validation h-adr" method="post" th:action="@{/subject/nyuryoku}" th:object="${subjectmodel}">
 				<div class="row mt-3">
-					<label for="CD" class="col-4 col-form-label text-end">科目コード</label>
+					<label for="cd" class="col-4 col-form-label text-end">科目コード</label>
 					<div class="col-4">
+<<<<<<< HEAD
 						<input type="text" class="form-control" id="cd" name="cd" placeholder="科目コードを入力して下さい" />
+=======
+						<input type="text" class="form-control" id="cd" name="cd" th:field="*{cd}" placeholder="科目コードを入力して下さい"
+							th:classappend="${#fields.hasErrors('cd')} ? 'is-invalid' : 'is-valid'" />
+						<div th:if="${#fields.hasErrors('cd')}" th:errors="*{cd}" class="invalid-feedback">
+							errors!</div>
+>>>>>>> branch 'master' of https://github.com/hikaruaraki/Dgroup.git
 					</div>
 	<!--科目名-->
 				<div class="row mt-3">
 					<label for="name" class="col-4 col-form-label text-end">科目名</label>
 					<div class="col-4">
+<<<<<<< HEAD
 						<input type="text" class="form-control" id="name" name="name" placeholder="科目名を入力してください" />
+=======
+						<input type="text" class="form-control" id="name" name="name" th:field="*{name}" placeholder="科目名を入力してください"
+							th:classappend="${#fields.hasErrors('name')} ? 'is-invalid' : 'is-valid'" />
+						<div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="invalid-feedback">
+							errors!</div>
+					</div>
+>>>>>>> branch 'master' of https://github.com/hikaruaraki/Dgroup.git
 				</div>
 				
+<<<<<<< HEAD
 				<div class="row mt-3">
+=======
+				<!--div class="row mt-3">
+>>>>>>> branch 'master' of https://github.com/hikaruaraki/Dgroup.git
 					<label for="schoolcd" class="col-4 col-form-label text-end">学校コード</label>
 					<div class="col-4">
+<<<<<<< HEAD
 						<input type="text" class="form-control" id="schoolcd" name="schoolcd" placeholder="学校コード" />
 					</div>
+=======
+						<input type="text" class="form-control" id="schoolcd" name="schoolcd" th:field="*{schoolcd}" placeholder="学校コード"
+							th:classappend="${#fields.hasErrors('schoolcd')} ? 'is-invalid' : 'is-valid'" />
+						<div th:if="${#fields.hasErrors('schoolcd')}" th:errors="*{schoolcd}" class="invalid-feedback">
+							errors!</div>
+					</div-->
+>>>>>>> branch 'master' of https://github.com/hikaruaraki/Dgroup.git
 			
 
 			

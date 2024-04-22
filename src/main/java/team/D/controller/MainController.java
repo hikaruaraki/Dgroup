@@ -43,6 +43,23 @@ public class MainController{
 			model.addAttribute("list",list);
 			return "student";
 		}
+		
+		@PostMapping("/student")
+	    public String getFilteredStudents(
+	            @RequestParam(name= "entYear" , required = false) Integer entYear,
+	            @RequestParam(name= "classNum" , required = false) String classNum,
+	           @RequestParam(name= "isAttend" , required = false) Boolean isAttend,
+	            Model model) {
+			System.out.println(entYear +":"+ classNum +":"+ isAttend);
+			if(classNum == ""){
+				classNum = null;
+			}
+			model.addAttribute("list", StudentService.searchStudents(entYear,classNum, isAttend));
+			//controllerのline31のlistと一緒
+			//listはtemplateでもともと指定してるものに合わせるline114
+	        return "student";
+	    }
+		
 //    学生情報入力
 	@GetMapping("/student/nyuryoku")
 	public ModelAndView add(StudentModel studentmodel, ModelAndView model) {
