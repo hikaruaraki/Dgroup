@@ -13,6 +13,7 @@ import lombok.Data;
 @Table(name="subjecttable")
 public class SubjectModel {
 	
+	
 	 @Id
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 @Column
@@ -21,9 +22,17 @@ public class SubjectModel {
 	@Column(name="SCHOOL_CD",length = 10, nullable = true)
 	 private String schoolcd;
 	 
+<<<<<<< HEAD
+	 @Column(name="CD" ,length = 10, nullable = true)
+=======
 	 @Column(name="CD",length = 10, nullable = true)
+>>>>>>> branch 'master' of https://github.com/hikaruaraki/Dgroup.git
 	 private String cd;
 	 
+<<<<<<< HEAD
+	 @Column(name="NAME" ,length = 10, nullable = true)
+=======
 	 @Column(name="NAME",length = 10, nullable = true)
+>>>>>>> branch 'master' of https://github.com/hikaruaraki/Dgroup.git
 	 private String name;
 }
