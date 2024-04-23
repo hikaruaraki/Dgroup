@@ -27,19 +27,7 @@ public class SecurityConfig {
 	@Autowired
 	private LoginRepository loginRepository;
 
-//	@Bean
-//	UserDetailsManager userDetailsManager() {
-//		JdbcUserDetailsManager jdbcManager = new JdbcUserDetailsManager(this.dataSource);
-//		//this.userRepository.saveAndFlush(this.makeUser("0000","0000"));
-//		return jdbcManager;
-//	}
-	
-//	private User makeUser(String name, String password) {
-//		User record = new User();
-//		record.setName(name);
-//		record.setPassword(password);
-//		return record;
-//	}
+
 
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
