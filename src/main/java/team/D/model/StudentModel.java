@@ -19,10 +19,10 @@ public class StudentModel{
 	 @Column
 	 private Long Id;
 	 
-	 @Column(length = 10, nullable = true)
+	 @Column(name="NO",length = 10, nullable = true)
 	 private String no;
 	 
-	 @Column(length = 10, nullable = true)
+	 @Column(name="NAME",length = 10, nullable = true)
 	 private String name;
 	 
 	 @Column(name="ENT_YEAR",length = 10, nullable = true)

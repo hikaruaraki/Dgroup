@@ -43,7 +43,7 @@
 
      <h2>学生情報変更</h2>
         <form th:action="@{/student/update}" th:object="${student}" method="post">
-            <input type="hidden" th:field="*{ID}">
+            <input type="hidden" th:field="*{Id}">
             <div class="form-group row">
                 <label for="entYear" class="col-sm-2 col-form-label">入学年度</label>
                 <div class="col-sm-10">
@@ -53,13 +53,13 @@
             <div class="form-group row">
                 <label for="studentNo" class="col-sm-2 col-form-label">学生番号</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="NO" name="NO" th:value="${student.NO}" readonly>
+                    <input type="text" class="form-control" id="no" name="no" th:value="${student.no}" readonly>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="studentName" class="col-sm-2 col-form-label">学生氏名</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="NAME" name="NAME" th:value="${student.NAME}" required>
+                    <input type="text" class="form-control" id="name" name="name" th:value="${student.name}" required>
                 </div>
             </div>
             <div class="form-group row">
@@ -88,7 +88,7 @@
             
      <!--削除-->
             <div>
-				<a th:href="@{/student/delete(id=*{ID})}">削除</a>
+				<a th:href="@{/student/delete(id=*{Id})}">削除</a>
 			</div>
             
             <div class="form-group row">
