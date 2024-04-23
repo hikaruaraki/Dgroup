@@ -105,4 +105,6 @@ public class MainController{
     	this.StudentService.delete(studentmodel.getID());
     	return "/student";
     }
+    
+
 }
