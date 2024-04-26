@@ -3,6 +3,8 @@ package team.D.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -15,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import io.micrometer.common.lang.NonNull;
 import team.D.model.StudentModel;
+import team.D.model.TeacherModel;
 import team.D.service.StudentService;
 
 
@@ -37,36 +40,45 @@ public class MainController{
 			return "base";
 		}
 	  
-		@GetMapping("/student")
-		public String student(Model model) {
-			List<StudentModel> list = StudentService.getStudentModelList();
-			model.addAttribute("list",list);
-			return "student";
-		}
+	  @GetMapping("/student")
+	  public ModelAndView getAllStudents(ModelAndView model, @AuthenticationPrincipal TeacherModel teacher) {
+	      String schoolCd = teacher.getSchoolCd();
+	      List<StudentModel> students = StudentService.getAllStudentsBySchoolCd(schoolCd);
+	      model.addObject("students", students);
+	      model.setViewName("student");
+	      return model;
+	  }
 		
 		@PostMapping("/student")
 	    public String getFilteredStudents(
 	            @RequestParam(name= "entYear" , required = false) Integer entYear,
 	            @RequestParam(name= "classNum" , required = false) String classNum,
-	           @RequestParam(name= "isAttend" , required = false) Boolean isAttend,
+	            @RequestParam(name= "isAttend" , required = false) Boolean isAttend,
 	            Model model) {
 			System.out.println(entYear +":"+ classNum +":"+ isAttend);
 			if(classNum == ""){
 				classNum = null;
 			}
-			model.addAttribute("list", StudentService.searchStudents(entYear,classNum, isAttend));
+			model.addAttribute("students", StudentService.searchStudents(entYear,classNum, isAttend));
 			//controllerのline31のlistと一緒
 			//listはtemplateでもともと指定してるものに合わせるline114
 	        return "student";
 	    }
 		
 //    学生情報入力
-	@GetMapping("/student/nyuryoku")
-	public ModelAndView add(StudentModel studentmodel, ModelAndView model) {
-		model.addObject("studentmodel", studentmodel);
-		model.setViewName("student_nyuryoku");
-		return model;
-	}
+		@GetMapping("/student/nyuryoku")
+		public ModelAndView add(StudentModel studentmodel, ModelAndView model, @AuthenticationPrincipal UserDetails user) {
+		    model.addObject("studentmodel", studentmodel);
+		    model.setViewName("student_nyuryoku");
+		    if (user instanceof TeacherModel) {
+		        TeacherModel teacher = (TeacherModel) user;
+		        String schoolCd = teacher.getSchoolCd();
+		        model.addObject("schoolCd", schoolCd);
+		    } else {
+		        // ユーザーが TeacherModel でない場合の処理
+		    }
+		    return model;
+		}
 
 	@PostMapping("/student/nyuryoku")
 	public String complate(@Validated @ModelAttribute @NonNull StudentModel studentmodel, RedirectAttributes result,

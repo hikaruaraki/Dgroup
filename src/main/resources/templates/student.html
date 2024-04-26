@@ -77,35 +77,34 @@
             </div>
         </form>
 
-        <div th:if="${list!=null and !list.empty}">
-            <table class="table table-striped mt-5">
-                <thead>
-                    <th>入学年度</th>
-                    <th>学生番号</th>
-                    <th>学生名</th>
-                    <th>クラス番号</th>
-                    <th>在学中</th>
-                    <th>編集</th>
-                   
-                </thead>
-                <tbody>
-                    <tr th:each="studentmodel, stat : ${list}" th:object="${studentmodel}">
-                        <td th:text="*{entYear}"></td>
-                        <td th:text="*{no}"></td>
-                        <td th:text="*{name}"></td>
-                        <td th:text="*{classNum}"></td>
-                        <td th:text="*{isAttend != null &amp;&amp; isAttend ? '◯' : (isAttend != null &amp;&amp; !isAttend ? '✕' : '✕')}"></td>
-                        <td><a th:href="@{/student/update(id=*{Id})}" class="btn btn-primary btn-sm">編集</a></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <div th:if="${students!=null and !students.empty}">
+    <table class="table table-striped mt-5">
+        <thead>
+            <th>入学年度</th>
+            <th>学生番号</th>
+            <th>学生名</th>
+            <th>クラス番号</th>
+            <th>在学中</th>
+            <th>編集</th>
+        </thead>
+        <tbody>
+            <tr th:each="student, stat : ${students}" th:object="${student}">
+                <td th:text="*{entYear}"></td>
+                <td th:text="*{no}"></td>
+                <td th:text="*{name}"></td>
+                <td th:text="*{classNum}"></td>
+                <td th:text="${student.isAttend != null &amp;&amp; student.isAttend ? '◯' : (student.isAttend != null &amp;&amp; !student.isAttend ? '✕' : '✕')}"></td>
+                <td><a th:href="@{/student/update(id=*{id})}" class="btn btn-primary btn-sm">編集</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
-        <div th:unless="${list!=null and !list.empty}">
-            <div class="alert alert-danger mt-5" role="alert">
-                データなし
-            </div>
-        </div>
+		<div th:unless="${students!=null and !students.empty}">
+    		<div class="alert alert-danger mt-5" role="alert">
+        		データなし
+    		</div>
+		</div>
 
         <a href="/student/nyuryoku" class="btn btn-primary">学生情報を入力する</a>
         

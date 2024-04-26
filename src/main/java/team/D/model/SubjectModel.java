@@ -19,12 +19,13 @@ public class SubjectModel {
 	 @Column
 	 private Long id;
 	
-	@Column(name="SCHOOL_CD",length = 10, nullable = true)
-	 private String schoolcd;
+	 @Column(name="SCHOOL_CD",length = 3, nullable = true)
+	 private String schoolCd;
 	
-	@Column(name="CD",length = 10, nullable = true)
+	 @Column(name="CD",length = 10, nullable = true)
 	 private String cd;
 
 	 @Column(name="NAME",length = 10, nullable = true)
 	 private String name;
+
 }

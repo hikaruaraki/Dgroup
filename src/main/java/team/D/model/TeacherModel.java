@@ -29,6 +29,7 @@ public class TeacherModel implements UserDetails {
 	 
 	 @Column(name="SCHOOL_CD",length = 3, nullable = true)
 	 private String schoolCd;
+
 	 
 	 /*
      
@@ -77,6 +78,10 @@ public class TeacherModel implements UserDetails {
 	     @Override
 	     public String getPassword() {// TODO 自動生成されたメソッド・スタブ
 	         return this.password;
+	     }
+	     
+	     public String getSchoolCd() {
+	    	 return this.schoolCd;
 	     }
 
 }

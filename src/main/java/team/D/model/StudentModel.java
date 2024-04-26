@@ -35,6 +35,7 @@ public class StudentModel{
 	 private Boolean isAttend;
 	 
 	 @Column(name="SCHOOL_CD",length = 3, nullable = true)
-	 private String schoolCd;
+	 public String schoolCd;
+	 }
+	 
 
-}

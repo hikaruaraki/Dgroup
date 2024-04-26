@@ -42,6 +42,7 @@ public class StudentService {
 	 * アドレス帳データの保存
 	 * @param AddressBook addressBook
 	 */
+	@Transactional
 	public void save(@NonNull StudentModel studentmodel) {
 		System.out.println(studentmodel);
 		this.studentrepository.save(studentmodel);
@@ -86,4 +87,9 @@ public class StudentService {
             return this.studentrepository.findAll(); // すべての学生を取得
         }
     }
+
+
+	public List<StudentModel> getAllStudentsBySchoolCd(String schoolCd) {
+		return studentrepository.findBySchoolCd(schoolCd);
+	}
 }

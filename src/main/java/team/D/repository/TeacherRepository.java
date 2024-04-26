@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import team.D.model.TeacherModel;
 
 @Repository
-public interface TeacherRepository extends JpaRepository<TeacherModel, Long> {
+public interface TeacherRepository extends JpaRepository<TeacherModel, String> {
 }
