@@ -7,4 +7,5 @@ import team.D.model.TestModel;
 
 @Repository
 public interface TestRepository extends JpaRepository<TestModel, String> {
+	
 }

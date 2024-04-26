@@ -39,6 +39,38 @@
   </nav>
 </header>
 
+ <form th:action="@{/student}" method="post" class="row g-3">
+            <div class="col-md-4">
+                <label for="entYear" class="form-label">入学年度</label>
+                <select class="form-select" id="entYear" name="entYear">
+                    <option value="">選択してください</option>
+                </select>
+                <div class="invalid-feedback">
+                    入学年度を選択してください。
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label for="classNum" class="form-label">クラス</label>
+                <select class="form-select" id="classNum" name="classNum">
+                    <option value="" selected>クラスを選択してください。</option>
+                    <option value="101">101</option>
+                    <option value="102">102</option>
+                    <option value="103">103</option>
+                    <option value="104">104</option>
+                    <option value="110">110</option>
+                </select>
+            </div>
+            <div class="col-md-4 align-self-end">
+                <div class="form-check">
+                    <input type="checkbox" id="isAttend" name="isAttend" class="form-check-input">
+                    <label for="isAttend" class="form-check-label">在学中</label>
+                </div>
+            </div>
+            <div class="col-12 mt-3">
+                <button type="submit" class="btn btn-primary">検索</button>
+            </div>
+        </form>
+
 <!-- Begin page content -->
 <main class="flex-shrink-0">
   <div class="container">

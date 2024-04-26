@@ -1,7 +1,7 @@
 buildscript {
     repositories {
         mavenCentral()
-    }
+    }	
     dependencies {
         classpath 'org.flywaydb:flyway-mysql:10.7.2'
     }
@@ -57,7 +57,7 @@ tasks.named('test') {
 }
 
 flyway {
-	url = 'jdbc:mysql://127.0.0.1:3306/team_tast'
+	url = 'jdbc:mysql://127.0.0.1:3306/team_test'
 	user = 'root'
 	password = ''
 }

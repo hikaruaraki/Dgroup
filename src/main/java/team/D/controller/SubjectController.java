@@ -51,7 +51,7 @@ public class SubjectController{
 		} catch (Exception e) {
 			redirectAttributes.addFlashAttribute("exception", e.getMessage());
 		}
-		return "redirect:/subject";
+		return "sub/complete";
 }
 	
 	   // 科目の変更フォームを表示
@@ -72,6 +72,6 @@ public class SubjectController{
   @GetMapping("/subject/delete")
   public String delet(Model model,Long id) {
   	this.SubjectService.delete(id);
-  	return "redirect:/subject";
+  	return "sub/delete";
   }
 }

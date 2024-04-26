@@ -78,7 +78,7 @@ public class MainController{
 		} catch (Exception e) {
 			redirectAttributes.addFlashAttribute("exception", e.getMessage());
 		}
-		return "redirect:/student";
+		return "complete";
 }
 	
 	   // 生徒の変更フォームを表示
