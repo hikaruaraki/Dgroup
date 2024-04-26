@@ -2,6 +2,8 @@ package team.D.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -14,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import io.micrometer.common.lang.NonNull;
 import team.D.model.SubjectModel;
+import team.D.model.TeacherModel;
 import team.D.service.SubjectService;
 
 @Controller
@@ -35,11 +38,23 @@ public class SubjectController{
 	
 //  科目情報入力
 	@GetMapping("/subject/nyuryoku")
-	public ModelAndView ad(SubjectModel subjectmodel, ModelAndView model) {
-		model.addObject("subjectmodel", subjectmodel);
-		model.setViewName("sub/nyuryoku");
-		return model;
+	public ModelAndView sub(SubjectModel subjectmodel, ModelAndView model, @AuthenticationPrincipal UserDetails user) {
+	    model.addObject("subjectmodel", subjectmodel);
+	    model.setViewName("sub/nyuryoku");
+	    if (user instanceof TeacherModel) {
+	        TeacherModel teacher = (TeacherModel) user;
+	        String schoolCd = teacher.getSchoolCd();
+	        model.addObject("schoolCd", schoolCd);
+	    } else {
+	        // ユーザーが TeacherModel でない場合の処理
+	    }
+	    return model;
 	}
+//	public ModelAndView ad(SubjectModel subjectmodel, ModelAndView model) {
+//		model.addObject("subjectmodel", subjectmodel);
+//		model.setViewName("sub/nyuryoku");
+//		return model;
+//	}
 
 	@PostMapping("/subject/nyuryoku")
 	public String complat(@Validated @ModelAttribute @NonNull SubjectModel subjectmodel, RedirectAttributes result,

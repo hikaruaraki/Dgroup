@@ -9,7 +9,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -43,21 +42,21 @@ public class TestController{
 			return "test/test";
 		}
 		
-		@PostMapping("/test")
-	    public String getFilteredStudents(
-	            @RequestParam(name= "entYear" , required = false) Integer entYear,
-	            @RequestParam(name= "classNum" , required = false) String classNum,
-	            @RequestParam(name= "isAttend" , required = false) Boolean isAttend,
-	            Model model) {
-			
-			if(classNum == ""){
-				classNum = null;
-			}
-			model.addAttribute("list2", StudentService.searchStudents(entYear,classNum,isAttend));
-			//controllerのline31のlistと一緒
-			//listはtemplateでもともと指定してるものに合わせるline114
-	        return "test/test";
-	    }
+//		@PostMapping("/test")
+//	    public String getFilteredStudents(
+//	            @RequestParam(name= "entYear" , required = false) Integer entYear,
+//	            @RequestParam(name= "classNum" , required = false) String classNum,
+//	            @RequestParam(name= "isAttend" , required = false) Boolean isAttend,
+//	            Model model) {
+//			
+//			if(classNum == ""){
+//				classNum = null;
+//			}
+//			model.addAttribute("list2", StudentService.searchStudents(entYear,classNum,isAttend));
+//			//controllerのline31のlistと一緒
+//			//listはtemplateでもともと指定してるものに合わせるline114
+//	        return "test/test";
+//	    }
 		
     //成績入力
 	@GetMapping("/test/nyuryoku")

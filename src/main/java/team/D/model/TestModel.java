@@ -16,8 +16,7 @@ public class TestModel {
 	 @Id
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 @Column
-	 private Long TID;
-	
+	 private Long Id;
 	
 	 @Column(name="STUDENT_CD" ,length = 10, nullable = true)
 	 private String studentcd;
