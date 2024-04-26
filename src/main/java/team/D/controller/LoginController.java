@@ -68,27 +68,5 @@ public class LoginController {
     }
     
     
-    
-//    // 先生登録ページの表示
-//    @GetMapping("/signup/")
-//    public String showTeacherForm(Model model) {
-//        model.addAttribute("signup", new TeacherModel());
-//        return "sign/signup";
-//    }
-// 
-//    // 先生登録フォームの処理
-//    @PostMapping("/signup/")
-//    public String registerTeacher(@Validated @ModelAttribute @NonNull TeacherModel teacher, RedirectAttributes redirectAttributes) {
-//        try {
-//            // パスワードをハッシュ化してセット
-////            String hashedPassword = passwordEncoder.encode(teacher.getPassword());
-////            teacher.setPassword(hashedPassword);
-//// 
-//            this.TeacherService.save(teacher);
-//            redirectAttributes.addFlashAttribute("successMessage", "先生の登録が完了しました。");
-//        } catch (Exception e) {
-//            redirectAttributes.addFlashAttribute("errorMessage", "先生の登録中にエラーが発生しました。");
-//        }
-//        return "redirect:/";
-//    }
+
 }

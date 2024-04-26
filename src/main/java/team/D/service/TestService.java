@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
 import team.D.model.TestModel;
+import team.D.repository.StudentRepository;
 import team.D.repository.TestRepository;
 
 @Service
@@ -18,6 +19,7 @@ public class TestService {
 
 	@Autowired
 	private TestRepository testrepository;
+	private StudentRepository studentrepository;
 
 	/**
 	 * アドレス帳一覧の取得
@@ -65,5 +67,6 @@ public List<TestModel> getTestModelList() {
         Optional<TestModel> optionalStudent = testrepository.findById(id);
         return optionalStudent.orElse(null);
     }
-}
+    
+ }
 
