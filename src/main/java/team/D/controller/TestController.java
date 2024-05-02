@@ -3,8 +3,8 @@ package team.D.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,8 +13,12 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import io.micrometer.common.lang.NonNull;
+import team.D.model.StudentModel;
+import team.D.model.SubjectModel;
+import team.D.model.TeacherModel;
 import team.D.model.TestModel;
 import team.D.service.StudentService;
+import team.D.service.SubjectService;
 import team.D.service.TestService;
 
 
@@ -26,21 +30,37 @@ import team.D.service.TestService;
 public class TestController{
 	
 	@Autowired
-	private TestService  TestService;
+	private TestService  testService;
 	@Autowired
-	private StudentService  StudentService;
+	private StudentService  studentService;
+	@Autowired
+	private SubjectService  subjectService;	
 	
 	  public TestController(TestService testservice) {
-		  this.TestService = testservice;
-				  
+		  this.testService = testservice;
+	  }
+	  
+
+	  @GetMapping("/test")
+	  public ModelAndView getAllStudents(ModelAndView model, @AuthenticationPrincipal TeacherModel teacher, @AuthenticationPrincipal StudentModel student, @AuthenticationPrincipal SubjectModel subject) {
+	      // 学校コード
+	      String schoolCd = teacher.getSchoolCd();
+	      List<TestModel> students = testService.getAllStudentsBySchoolCd(schoolCd);
+	      model.addObject("students", students);
+
+	      // Studentmodel
+	      List<StudentModel> studentList = studentService.getStudentAll();
+	      model.addObject("student", studentList);
+
+	      // SubjectModel
+	      List<SubjectModel> subjectModel = subjectService.getSubjectAll();
+	      model.addObject("subject", subjectModel);
+	      model.setViewName("test/test");
+	      return model;
 	  }
 
-		@GetMapping("/test")
-		public String student(Model model) {
-			List<TestModel> list2 = TestService.getTestModelList();
-			model.addAttribute("list2",list2);
-			return "test/test";
-		}
+		
+		
 		
 //		@PostMapping("/test")
 //	    public String getFilteredStudents(
@@ -70,7 +90,7 @@ public class TestController{
 	public String complate(@Validated @ModelAttribute @NonNull TestModel testmodel, RedirectAttributes result,
 			ModelAndView model, RedirectAttributes redirectAttributes) {
 		try {
-			this.TestService.save(testmodel);
+			this.testService.save(testmodel);
 			redirectAttributes.addFlashAttribute("exception", "");
 
 		} catch (Exception e) {

@@ -51,7 +51,7 @@
         <h2 class="mt-5">得点管理システム</h2>
         <h4 class="mt-4">成績管理</h4>
         <div class="form-container">
-            <form th:action="@{/student}" method="post" class="row g-3">
+            <form th:action="@{/test}" method="post" class="row g-3">
                 <div class="col-md-4">
                 <label for="entYear" class="form-label">入学年度</label>
                 <select class="form-select" id="entYear" name="entYear">
@@ -82,27 +82,47 @@
                 </div>
             </form>
         </div>
-        
-        <div th:if="${list!=null and !list.empty}">
+        <table class="table table-striped">
+			<tbody>
+				<tr class="align-middle" th:each="subject, stat : ${subject}" th:object="${subject}">
+
+					<td th:text="*{name}"></td>
+
+			</tbody>
+			<div th:unless="${subject!=null and !subject.empty}">
+            <div class="alert alert-danger mt-5" role="alert">
+                科目なし
+            </div>
+        </div>
+		</table>
+        <div th:if="${student!=null and !student.empty}">
             <table class="table table-striped mt-5">
                 <thead>
                     <th>入学年度</th>
                     <th>クラス番号</th>
+                    <th>学生番号</th>
+                    <th>氏名</th>
+                    <th>点数</th>
+                    
                  
                    
                 </thead>
                 <tbody>
-                    <tr th:each="studentmodel, stat : ${list2}" th:object="${studentmodel}">
+                    <tr th:each="student, stat : ${student}" th:object="${student}">
                         <td th:text="*{entYear}"></td>
                         <td th:text="*{classNum}"></td>
+                        <td th:text="*{no}"></td>
+                        <td th:text="*{name}"></td>
+                      <form></form>
+                    
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <div th:unless="${list!=null and !list.empty}">
+        <div th:unless="${student!=null and !student.empty}">
             <div class="alert alert-danger mt-5" role="alert">
-                データなし
+                学生情報なし
             </div>
         </div>
     </main>

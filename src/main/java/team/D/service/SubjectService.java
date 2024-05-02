@@ -65,4 +65,9 @@ public class SubjectService {
         Optional<SubjectModel> optionalStudent = subjectrepository.findById(id);
         return optionalStudent.orElse(null);
     }
+
+	public List<SubjectModel> getSubjectAll() {
+		return subjectrepository.findAll();
+	}
+
 }

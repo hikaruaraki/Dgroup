@@ -25,7 +25,7 @@ public class TestModel {
 	 private String subjectcd;
 	 
 	 @Column(name="SCHOOL_CD" ,length = 10, nullable = true)
-	 private String schoolcd;
+	 private String schoolCd;
 	 
 	 @Column(name="NO" ,length = 10, nullable = true)
 	 private Integer no;

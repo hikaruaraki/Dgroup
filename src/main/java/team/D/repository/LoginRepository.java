@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import team.D.model.TeacherModel;
 
 @Repository
-public interface LoginRepository extends JpaRepository<TeacherModel, String> {
+public interface LoginRepository extends JpaRepository<TeacherModel, Long> {
 
 	TeacherModel findByIDEquals(String ID);
 	

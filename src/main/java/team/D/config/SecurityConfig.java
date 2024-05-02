@@ -62,8 +62,8 @@ public class SecurityConfig {
 				.userDetailsService(this.loginService)
 				.logout(logout -> {
 					logout
-							.logoutUrl("/logout/")
-							.logoutSuccessUrl("/login/")
+							.logoutUrl("/logout")
+							.logoutSuccessUrl("/login")
 							.deleteCookies("JSESSIONID")
 							.invalidateHttpSession(true);
 				});

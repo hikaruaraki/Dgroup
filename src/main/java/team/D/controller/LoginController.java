@@ -60,12 +60,23 @@ public class LoginController {
             System.err.println("ログインに失敗しました。");
         }
         return "login/login";
-    }	@GetMapping("/login")
+    }
+    
+    @GetMapping("/login")
 	public ModelAndView in(TeacherModel teachermodel ,ModelAndView model) {
 		model.addObject("login", teachermodel);
 		model.setViewName("login/login");
 		return model;
     }
+    
+    @GetMapping("/logout")
+    public ModelAndView logout(TeacherModel teachermodel ,ModelAndView model) {
+    	model.addObject("logout", teachermodel);
+    	model.setViewName("login/logout");
+    	return model;
+    }
+    
+    
     
     
 

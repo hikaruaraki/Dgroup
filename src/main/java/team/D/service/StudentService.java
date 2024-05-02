@@ -92,4 +92,8 @@ public class StudentService {
 	public List<StudentModel> getAllStudentsBySchoolCd(String schoolCd) {
 		return studentrepository.findBySchoolCd(schoolCd);
 	}
+
+	public List<StudentModel> getStudentAll() {
+		return studentrepository.findAll();
+	}
 }

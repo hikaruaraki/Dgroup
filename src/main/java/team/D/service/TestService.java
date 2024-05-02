@@ -67,6 +67,10 @@ public List<TestModel> getTestModelList() {
         Optional<TestModel> optionalStudent = testrepository.findById(id);
         return optionalStudent.orElse(null);
     }
+
+	public List<TestModel> getAllStudentsBySchoolCd(String schoolCd) {
+		return testrepository.findBySchoolCd(schoolCd);
+	}
     
  }
 

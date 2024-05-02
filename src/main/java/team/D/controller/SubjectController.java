@@ -23,16 +23,16 @@ import team.D.service.SubjectService;
 public class SubjectController{
 	
 	@Autowired
-	private SubjectService  SubjectService;
+	private SubjectService  subjectService;
 	
 	  public SubjectController(SubjectService subjectservice) {
-		  this.SubjectService = subjectservice;
+		  this.subjectService = subjectservice;
 				  
 	  }
 	
 	@GetMapping("/subject")
 		public String subject(Model model) {
-			model.addAttribute("sub",this.SubjectService.getSubjectModelList());
+			model.addAttribute("sub",this.subjectService.getSubjectModelList());
 			return "sub/subject";
 		}
 	
@@ -50,17 +50,12 @@ public class SubjectController{
 	    }
 	    return model;
 	}
-//	public ModelAndView ad(SubjectModel subjectmodel, ModelAndView model) {
-//		model.addObject("subjectmodel", subjectmodel);
-//		model.setViewName("sub/nyuryoku");
-//		return model;
-//	}
 
 	@PostMapping("/subject/nyuryoku")
 	public String complat(@Validated @ModelAttribute @NonNull SubjectModel subjectmodel, RedirectAttributes result,
 			ModelAndView model, RedirectAttributes redirectAttributes) {
 		try {
-			this.SubjectService.save(subjectmodel);
+			this.subjectService.save(subjectmodel);
 			redirectAttributes.addFlashAttribute("exception", "");
 
 		} catch (Exception e) {
@@ -72,7 +67,7 @@ public class SubjectController{
 	   // 科目の変更フォームを表示
   @GetMapping("/subject/update")
   public String showUpdateSubjectForm(@RequestParam Long id, Model model) {
-      SubjectModel subject = SubjectService.getById(id);
+      SubjectModel subject = subjectService.getById(id);
       model.addAttribute("subject", subject);
       return "sub/change";
   }
@@ -80,13 +75,13 @@ public class SubjectController{
   // 科目情報の変更
   @PostMapping("/subject/update")
   public String updateSubject(@ModelAttribute("subject") SubjectModel subjectModel) {
-      SubjectService.update(subjectModel);
+      subjectService.update(subjectModel);
       return "redirect:/subject";
   }
   
   @GetMapping("/subject/delete")
   public String delet(Model model,Long id) {
-  	this.SubjectService.delete(id);
+  	this.subjectService.delete(id);
   	return "sub/delete";
   }
 }

@@ -36,7 +36,7 @@ public class TeacherService {
 	 * @param @NonNull Long index
 	 * @return  AddressBook
 	 */
-	public TeacherModel get(@NonNull String index) {
+	public TeacherModel get(@NonNull Long index) {
 		TeacherModel addressBook = this.teacherrepository.findById(index).orElse(new TeacherModel());
 		return addressBook;
 	}
@@ -46,7 +46,7 @@ public class TeacherService {
 	 * アドレス帳データの削除
 	 * @param @NonNull Long index
 	 */
-	public void delete(@NonNull String index) {
+	public void delete(@NonNull Long index) {
 		this.teacherrepository.deleteById(index);
 	}
 	
