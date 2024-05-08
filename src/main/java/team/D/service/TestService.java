@@ -71,6 +71,6 @@ public List<TestModel> getTestModelList() {
 	public List<TestModel> getAllStudentsBySchoolCd(String schoolCd) {
 		return testrepository.findBySchoolCd(schoolCd);
 	}
-    
+
  }
 

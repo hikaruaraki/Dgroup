@@ -10,5 +10,5 @@ import team.D.model.SubjectModel;
 @Repository
 public interface SubjectRepository extends JpaRepository<SubjectModel, Long> {
 
-	List<SubjectModel> findAll();
+	List<SubjectModel> findBySchoolCd(String schoolCd);
 }

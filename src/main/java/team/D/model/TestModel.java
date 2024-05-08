@@ -11,29 +11,29 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="test")
-public class TestModel {
-	
-	 @Id
-	 @GeneratedValue(strategy = GenerationType.IDENTITY)
-	 @Column
-	 private Long Id;
-	
-	 @Column(name="STUDENT_CD" ,length = 10, nullable = true)
-	 private String studentcd;
-	 
-	 @Column(name="SUBJECT_CD" ,length = 10, nullable = true)
-	 private String subjectcd;
-	 
-	 @Column(name="SCHOOL_CD" ,length = 10, nullable = true)
-	 private String schoolCd;
-	 
-	 @Column(name="NO" ,length = 10, nullable = true)
-	 private Integer no;
-	 
-	 @Column(name="POINT" ,length = 10, nullable = true)
-	 private Integer point;
-	 
-	 @Column(name="CLASS_NUM" ,length = 10, nullable = true)
-	 private String classnum;
+	public class TestModel {
+		
+		 @Id
+		 @GeneratedValue(strategy = GenerationType.IDENTITY)
+		 @Column
+		 private Long Id;
+		
+		 @Column(name="STUDENT_CD" ,length = 10, nullable = true)
+		 private String studentcd;
+		 
+		 @Column(name="SUBJECT_CD" ,length = 10, nullable = true)
+		 private String subjectcd;
+		 
+		 @Column(name="SCHOOL_CD" ,length = 10, nullable = true)
+		 private String schoolCd;
+		 
+		 @Column(name="NO" ,length = 10, nullable = true)
+		 private Integer no;
+		 
+		 @Column(name="POINT" ,length = 10, nullable = true)
+		 private Integer point;
+		 
+		 @Column(name="CLASS_NUM" ,length = 10, nullable = true)
+		 private String classnum;
 
-	}
+		}

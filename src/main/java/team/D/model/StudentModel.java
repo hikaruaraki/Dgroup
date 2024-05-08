@@ -36,6 +36,7 @@ public class StudentModel{
 	 
 	 @Column(name="SCHOOL_CD",length = 3, nullable = true)
 	 public String schoolCd;
+
 	 }
 	 
 

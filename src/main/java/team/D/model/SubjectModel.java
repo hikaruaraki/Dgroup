@@ -29,11 +29,5 @@ public class SubjectModel {
 	 @Column(name="NAME",length = 10, nullable = true)
 	 private String name;
 
-	 public String getName() {
-		 return this.name;
-	 }
-	 
-	 public String getCd() {
-		 return this.cd;
-	 }
+
 }

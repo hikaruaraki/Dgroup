@@ -93,7 +93,7 @@ public class StudentService {
 		return studentrepository.findBySchoolCd(schoolCd);
 	}
 
-	public List<StudentModel> getStudentAll() {
-		return studentrepository.findAll();
+	public List<StudentModel> getStudentEntYear(Integer entYear) {
+		return studentrepository.findByEntYear(entYear);
 	}
 }
