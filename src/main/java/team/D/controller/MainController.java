@@ -94,12 +94,22 @@ public class MainController{
 }
 	
 	   // 生徒の変更フォームを表示
-    @GetMapping("/student/update")
-    public String showUpdateStudentForm(@RequestParam Long id, Model model) {
-        StudentModel student = StudentService.getById(id);
-        model.addAttribute("student", student);
-        return "change";
-    }
+	@GetMapping("/student/update")
+	public String showUpdateStudentForm(@RequestParam Long id, Model model, @AuthenticationPrincipal UserDetails user) {
+	    // 学生IDを使用して学生情報を取得
+	    StudentModel student = StudentService.getById(id);
+	    model.addAttribute("student", student);
+	    
+	    // 教師の場合は学校コードを取得してモデルに追加
+	    if (user instanceof TeacherModel) {
+	        TeacherModel teacher = (TeacherModel) user;
+	        String schoolCd = teacher.getSchoolCd();
+	        model.addAttribute("schoolCd", schoolCd);
+	    }
+	    
+	    return "change"; // 変更画面のビュー名を返す
+	}
+
  
     // 生徒情報の変更
     @PostMapping("/student/update")

@@ -27,7 +27,7 @@ public interface StudentRepository extends JpaRepository<StudentModel, Long> {
 
 		List<StudentModel> findBySchoolCd(String schoolCd);
 		
-		List<StudentModel> findByYear(String schoolCd);
+	
 		
 
 }

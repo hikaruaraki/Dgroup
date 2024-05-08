@@ -72,5 +72,9 @@ public List<TestModel> getTestModelList() {
 		return testrepository.findBySchoolCd(schoolCd);
 	}
 
+	public Object searchStudents(Integer entYear, String classNum) {
+		return null;
+	}
+
  }
 

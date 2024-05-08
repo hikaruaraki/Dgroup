@@ -94,6 +94,7 @@ public class StudentService {
 	}
 
 	public List<StudentModel> getStudentEntYear(String schoolCd) {
-		return studentrepository.findByYear(schoolCd);
+		return studentrepository.findBySchoolCd(schoolCd);
 	}
+
 }
