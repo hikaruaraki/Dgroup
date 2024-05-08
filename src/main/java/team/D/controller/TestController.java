@@ -7,6 +7,8 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import team.D.model.StudentModel;
 import team.D.model.SubjectModel;
@@ -43,12 +45,10 @@ public class TestController{
 		      List<TestModel> students = testService.getAllStudentsBySchoolCd(schoolCd);
 		      model.addAttribute("students", students);
 	
-		    if (student != null) {
 		        // Studentmodel
-		        Integer entyear = student.getEntYear();
-		        List<StudentModel> studentList = studentService.getStudentEntYear(entyear);
+		        List<StudentModel> studentList = studentService.getStudentEntYear(schoolCd);
 		        model.addAttribute("student", studentList);
-		    }
+		    
 	
 		      // SubjectModel
 		      List<SubjectModel> subjectModel = subjectService.getAllSubjectBySchoolCd(schoolCd);
@@ -58,21 +58,21 @@ public class TestController{
 		  }
 
 		
-//		@PostMapping("/test")
-//	    public String getFilteredStudents(
-//	            @RequestParam(name= "entYear" , required = false) Integer entYear,
-//	            @RequestParam(name= "classNum" , required = false) String classNum,
-////	            @RequestParam(name= "isAttend" , required = false) Boolean isAttend,
-//	            Model model) {
-//			
-//			if(classNum == ""){
-//				classNum = null;
-//			}
-//		model.addAttribute("list", testService.searchStudents(entYear,classNum));
-//			//controllerのline31のlistと一緒
-//			//listはtemplateでもともと指定してるものに合わせるline114
-//	        return "test/test";
-//	    }
+		@PostMapping("/test")
+	    public String getFilteredStudents(
+	            @RequestParam(name= "entYear" , required = false) Integer entYear,
+	            @RequestParam(name= "classNum" , required = false) String classNum,
+//	            @RequestParam(name= "isAttend" , required = false) Boolean isAttend,
+	            Model model) {
+			
+			if(classNum == ""){
+				classNum = null;
+			}
+		model.addAttribute("list", testService.searchStudents(entYear,classNum));
+			//controllerのline31のlistと一緒
+			//listはtemplateでもともと指定してるものに合わせるline114
+	        return "test/test";
+	    }
 		
 
 }
