@@ -9,6 +9,7 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
+import team.D.model.StudentModel;
 import team.D.model.TestModel;
 import team.D.repository.StudentRepository;
 import team.D.repository.TestRepository;
@@ -19,6 +20,7 @@ public class TestService {
 
 	@Autowired
 	private TestRepository testrepository;
+	@Autowired
 	private StudentRepository studentrepository;
 
 	/**
@@ -72,9 +74,16 @@ public List<TestModel> getTestModelList() {
 		return testrepository.findBySchoolCd(schoolCd);
 	}
 
-	public Object searchStudents(Integer entYear, String classNum) {
-		return null;
-	}
+	// 成績の一覧表示
+    // 学生テーブルから入学年度とクラス番号で絞り込み
+    public List<StudentModel> Test(Integer entYear, String classNum){
+        return studentrepository.findByEntYearAndClassNum(entYear, classNum);
+    }
+    
+    /* 成績の登録 */
+    public void saveTest(TestModel testModel) {
+        testrepository.save(testModel);
+    }
 
  }
 

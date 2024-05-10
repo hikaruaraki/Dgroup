@@ -24,7 +24,7 @@ public class SubjectModel {
 	 private String schoolCd;
 	
 	 @Column(name="CD",length = 10, nullable = true)
-	 private String cd;
+	 private String subjectCd;
 
 	 @Column(name="NAME",length = 10, nullable = true)
 	 private String name;

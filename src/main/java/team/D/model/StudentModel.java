@@ -20,7 +20,7 @@ public class StudentModel{
 	 private Long Id;
 	 
 	 @Column(name="NO",length = 10, nullable = true)
-	 private String no;
+	 private String studentCd;
 	 
 	 @Column(name="NAME",length = 10, nullable = true)
 	 private String name;

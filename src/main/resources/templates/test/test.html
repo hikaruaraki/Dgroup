@@ -103,9 +103,9 @@
                                         </select>
                                     </td>
                                     <td>
-                                        <select id="subjectModel" name="subjectModel" class="form-select">
+                                        <select id="subjectCd" name="subjectCd" class="form-select">
                                             <option value="" disabled selected>科目</option>
-                                            <option th:each="subjectModel : ${subjectModel}" th:value="${subjectModel.name}" th:text="${subjectModel.name}">科目</option>
+                                            <option th:each="subjectCd : ${subjectCd}" th:value="${subjectCd.subjectCd}" th:text="${subjectCd.subjectCd}">科目</option>
                                         </select>
                                     </td>
                                     <td>
@@ -116,32 +116,52 @@
                                         </select>
                                     </td>
                                     <td>
-                                        <button type="submit" class="btn btn-outline-primary">検索</button>
+                                        <button onclick="document.getElementById('search-results').classList.add('active')">検索する</button>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-            </form>
-        </div>
+          </form>
+       </div>
 
-        <!-- テーブルデータ -->
-        <div th:if="${test!=null and !test.empty}">
-            <table class="table table-striped mt-5">
-                <thead>
-                    <tr>
-                        <th>入学年度</th>
-                        <th>学生番号</th>
-                        <th>学生名</th>
-                        <th>クラス番号</th>
-                        <th>在学中</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- データ行 -->
-                </tbody>
-            </table>
+       <!-- テーブルデータ -->
+        <div class="row justify-content-center" th:if="${not #lists.isEmpty(test)}">
+            <div class="container mt-4">
+               <table class="table table-bordered">
+					科目: <span th:text="${selectsubjectCd}"></span>  (<span th:text="${selectno}"></span>回目)
+				<form method="post" th;object="${TestModel}"  th:action="@{/test/save}">
+                    <thead>
+                        <tr>
+                            <th>入学年度</th>
+                            <th>クラス番号</th>
+                            <th>学生番号</th>
+                            <th>学生名</th>
+                            <th>点数</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- 学生の情報を反映 -->
+                        <tr th:each="test : ${test}">
+                            <td th:text="${test.entYear}"></td>
+                            <td th:text="${test.classNum}"></td>
+                            <td th:text="${test.studentCd}"></td>
+                            <td th:text="${test.name}"></td>
+                            <td><input type="text" id="point" name="point" min="0" max="100" class="form-control"></td>
+                            <!-- 隠しフィールド -->
+					                <input type="hidden" id="studentCd" name="studentCd" th:value="${test.studentCd}">
+					                <input type="hidden" id="schoolCd" name="schoolCd" th:value="${test.schoolCd}">
+					                <input type="hidden" id="classNum" name="classNum" th:value="${test.classNum}">
+					                <input type="hidden" id="no" name="no" th:value="${selectno}">
+					                <input type="hidden" id="subjectCd" name="subjectCd" th:value="${selectsubjectCd}">
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="my-4">
+    					<input type="submit" class="btn btn-primary" value="送信"/>
+     				</div>
+            </div>
         </div>
     </main>
 

@@ -19,10 +19,10 @@ import lombok.Data;
 		 private Long Id;
 		
 		 @Column(name="STUDENT_CD" ,length = 10, nullable = true)
-		 private String studentcd;
+		 private String studentCd;
 		 
 		 @Column(name="SUBJECT_CD" ,length = 10, nullable = true)
-		 private String subjectcd;
+		 private String subjectCd;
 		 
 		 @Column(name="SCHOOL_CD" ,length = 10, nullable = true)
 		 private String schoolCd;
@@ -34,6 +34,6 @@ import lombok.Data;
 		 private Integer point;
 		 
 		 @Column(name="CLASS_NUM" ,length = 10, nullable = true)
-		 private String classnum;
+		 private String classNum;
 
 		}
