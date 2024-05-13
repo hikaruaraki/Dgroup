@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>得点管理システム</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        body {
+            padding-top: 56px; /* 固定ナビゲーションの高さ */
+        }
+        /* フォームの高さを調整 */
+        .form-container {
+            margin-top: 2rem; /* フォームと他の要素の間の余白 */
+            padding-bottom: 2rem; /* フォームの下の余白 */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <!-- 固定ナビゲーション -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">成績情報</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/">top</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/student">学生情報</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/subject">科目</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/test">成績</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h2 class="mt-5">得点管理システム</h2>
+        <h4 class="mt-4">成績参照</h4>
+        <div class="form-container">
+            <form th:action="@{/test}" method="post" class="row g-3" th:object"${testmodel}">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>入学年度</th>
+                                    <th>クラス</th>
+                                    <th>科目</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <select id="entYear" name="entYear" class="form-select">
+                                            <option value="" disabled selected>入学年度</option>
+                                            <option value="2014">2014年</option>
+                                            <option value="2015">2015年</option>
+                                            <option value="2016">2016年</option>
+                                            <option value="2017">2017年</option>
+                                            <option value="2018">2018年</option>
+                                            <option value="2019">2019年</option>
+                                            <option value="2020">2020年</option>
+                                            <option value="2021">2021年</option>
+                                            <option value="2022">2022年</option>
+                                            <option value="2023">2023年</option>
+                                            <option value="2024">2024年</option>
+                                            <option value="2025">2025年</option>
+                                            <option value="2026">2026年</option>
+                                            <option value="2027">2027年</option>
+                                            <option value="2028">2028年</option>
+                                            <option value="2029">2029年</option>
+                                            <option value="2030">2030年</option>
+                                            <option value="2031">2031年</option>
+                                            <option value="2032">2032年</option>
+                                            <option value="2033">2033年</option>
+                                            <option value="2034">2034年</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select id="classNum" name="classNum" class="form-select">
+                                            <option value="" disabled selected>クラス</option>
+                            					<option value="101">101</option>
+                            					<option value="102">102</option>
+                            					<option value="103">103</option>
+                            					<option value="104">104</option>
+                            					<option value="110">110</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select id="subjectCd" name="subjectCd" class="form-select">
+                                            <option value="" disabled selected>科目</option>
+                                            <option th:each="subjectCd : ${subjectCd}" th:value="${testmodel.subjectCd}" th:text="${testmodel.subjectCd}">科目</option>
+                                        </select>
+                                    </td>
+                                   
+                                    <td>
+                                        <button onclick="document.getElementById('search-results').classList.add('active')">検索する</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            
+                        </table>
+                    </div>
+                </div>
+         <div class="form-container">
+          </form>
+          <form th:action="@{/test}" method="post" class="row g-3"　th:object"${testmodel}">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>学生番号</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+									<td>
+                                        <select id="subjectCd" name="subjectCd" class="form-select">
+                                            <option value="" disabled selected>科目</option>
+                                            <option th:each="subjectCd : ${subjectCd}" th:value="${testmodel.subjectCd}" th:text="${testmodel.subjectCd}">科目</option>
+                                        </select>
+                                    </td>                                    <td>
+                                        <button onclick="document.getElementById('search-results').classList.add('active')">検索する</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            
+                        </table>
+                    </div>
+                </div>
+          </form>
+          </div>
+       </div>
+				<div th:if="${students!=null and !students.empty}">
+    <table class="table table-striped mt-5">
+        <thead>
+            <th>入学年度</th>
+            <th>クラス</th>
+            <th>学生番号</th>
+            <th>科目</th>
+            <th>回数</th>
+            <th>点数</th>
+        </thead>
+        <tbody>
+            <tr th:each="student, stat : ${students}" th:object="${testmodel}">
+				<td th:text="${entYear}"></td>
+				<td th:text="${classNum}"></td>
+                <td th:text="*{studentCd}"></td>
+                <td th:text="*{subjectCd}"></td>
+                <td th:text="*{no}"></td>
+                <td th:text="*{point}"></td>
+                
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+		<div th:unless="${students!=null and !students.empty}">
+    		<div class="alert alert-danger mt-5" role="alert">
+        		検索してね
+    		</div>
+		</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+
+<footer class="my-5 pt-5 text-body-secondary text-center text-small">
+    <p class="mb-1">&copy; 2017–2023 Company Name</p>
+</footer>
+
+</html>

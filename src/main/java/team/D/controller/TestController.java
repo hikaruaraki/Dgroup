@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpServletRequest;
 import team.D.model.StudentModel;
@@ -112,5 +113,16 @@ public class TestController{
 			public String index(Model model) {
 				return "test/complete";
 			}
+		  
+		//成績参照ページ
+		  @GetMapping("/reference")
+		  public ModelAndView getReferenece(TestModel testmodel,ModelAndView model, @AuthenticationPrincipal TeacherModel teacher) {
+		      String schoolCd = teacher.getSchoolCd();
+		      List<TestModel> students = testService.getAllStudentsBySchoolCd(schoolCd);
+		      model.addObject("students", students);
+		      model.setViewName("test/reference");
+		      model.addObject("testmodel",testmodel);
+		      return model;
+		  }
 
 }

@@ -56,9 +56,9 @@
 				<div class="row mt-3">
 					<label for="NO" class="col-4 col-form-label text-end">学生番号</label>
 					<div class="col-4">
-						<input type="text" class="form-control" id="no" name="no" th:field="*{no}" placeholder="2347***"
-							th:classappend="${#fields.hasErrors('no')} ? 'is-invalid' : 'is-valid'" required />
-						<div th:if="${#fields.hasErrors('no')}" th:errors="*{no}" class="invalid-feedback">
+						<input type="text" class="form-control" id="studentCd" name="no" th:field="*{studentCd}" placeholder="2347***"
+							th:classappend="${#fields.hasErrors('studentCd')} ? 'is-invalid' : 'is-valid'" required />
+						<div th:if="${#fields.hasErrors('studentCd')}" th:errors="*{studentCd}" class="invalid-feedback">
 							errors!</div>
 					</div>
 			

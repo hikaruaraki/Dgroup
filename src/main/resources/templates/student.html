@@ -35,7 +35,8 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/test">成績</a>
-                        </li>
+						</li>
+                    
                         <li class="nav-item">
 							<a class="nav-link" href="/logout">ログアウト</a>
 						</li>
@@ -97,7 +98,7 @@
         <tbody>
             <tr th:each="student, stat : ${students}" th:object="${student}">
                 <td th:text="*{entYear}"></td>
-                <td th:text="*{no}"></td>
+                <td th:text="*{studentCd}"></td>
                 <td th:text="*{name}"></td>
                 <td th:text="*{classNum}"></td>
                 <td th:text="${student.isAttend != null &amp;&amp; student.isAttend ? '◯' : (student.isAttend != null &amp;&amp; !student.isAttend ? '✕' : '✕')}"></td>

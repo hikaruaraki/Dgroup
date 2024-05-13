@@ -61,7 +61,7 @@
 			<tbody>
 				<tr class="align-middle" th:each="subjectmodel, stat : ${sub}" th:object="${subjectmodel}">
 					
-					<td th:text="*{cd}"></td>
+					<td th:text="*{subjectCd}"></td>
 					<td th:text="*{name}"></td>
 					
 					<td><a th:href="@{/subject/update(id=*{id})}">編集</a></td>	
