@@ -11,7 +11,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="test")
-	public class TestModel {
+	public class TestModel{
 		
 		 @Id
 		 @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +27,7 @@ import lombok.Data;
 		 @Column(name="SCHOOL_CD" ,length = 10, nullable = true)
 		 private String schoolCd;
 		 
-		 @Column(name="NO" ,length = 10, nullable = true)
+		 @Column(name="NO" ,length = 10, nullable = true, insertable = false, updatable = false)
 		 private Integer no;
 		 
 		 @Column(name="POINT" ,length = 10, nullable = true)
@@ -35,5 +35,5 @@ import lombok.Data;
 		 
 		 @Column(name="CLASS_NUM" ,length = 10, nullable = true)
 		 private String classNum;
-
+		 	
 		}

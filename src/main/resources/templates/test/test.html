@@ -39,8 +39,14 @@
                             <a class="nav-link" href="/subject">科目</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/test">成績</a>
+                            <a class="nav-link" href="/test">成績登録</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/reference">成績参照</a>
+                        </li>
+                        <li class="nav-item">
+							<a class="nav-link" href="/logout">ログアウト</a>
+						</li>
                     </ul>
                 </div>
             </div>
@@ -105,7 +111,7 @@
                                     <td>
                                         <select id="subjectCd" name="subjectCd" class="form-select">
                                             <option value="" disabled selected>科目</option>
-                                            <option th:each="subjectCd : ${subjectCd}" th:value="${subjectCd.subjectCd}" th:text="${subjectCd.subjectCd}">科目</option>
+                                            <option th:each="subjectCd : ${subjectCd}" th:value="${subjectCd.subjectCd}" th:text="${subjectCd.name}">科目</option>
                                         </select>
                                     </td>
                                     <td>

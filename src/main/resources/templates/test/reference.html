@@ -39,8 +39,14 @@
                             <a class="nav-link" href="/subject">科目</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/test">成績</a>
+                            <a class="nav-link" href="/test">成績登録</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/reference">成績参照</a>
+                        </li>
+                        <li class="nav-item">
+							<a class="nav-link" href="/logout">ログアウト</a>
+						</li>
                     </ul>
                 </div>
             </div>
@@ -51,7 +57,7 @@
         <h2 class="mt-5">得点管理システム</h2>
         <h4 class="mt-4">成績参照</h4>
         <div class="form-container">
-            <form th:action="@{/test}" method="post" class="row g-3" th:object"${testmodel}">
+            <form th:action="@{/reference}" method="post" class="row g-3" th:object"${studenttest}">
                 <div class="col-md-12">
                     <div class="table-responsive">
                         <table class="table table-bordered">
@@ -66,7 +72,7 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <select id="entYear" name="entYear" class="form-select">
+                                        <select id="enteaYr" name="entYear" class="form-select">
                                             <option value="" disabled selected>入学年度</option>
                                             <option value="2014">2014年</option>
                                             <option value="2015">2015年</option>
@@ -104,7 +110,7 @@
                                     <td>
                                         <select id="subjectCd" name="subjectCd" class="form-select">
                                             <option value="" disabled selected>科目</option>
-                                            <option th:each="subjectCd : ${subjectCd}" th:value="${testmodel.subjectCd}" th:text="${testmodel.subjectCd}">科目</option>
+                                            <option th:each="subjectCd : ${subjectCd}" th:value="${subjectCd}" th:text="${subjectCd.name}">科目</option>
                                         </select>
                                     </td>
                                    
@@ -119,7 +125,7 @@
                 </div>
          <div class="form-container">
           </form>
-          <form th:action="@{/test}" method="post" class="row g-3"　th:object"${testmodel}">
+          <form th:action="@{/reference}" method="post" class="row g-3"　th:object"${studentCd}">
                 <div class="col-md-12">
                     <div class="table-responsive">
                         <table class="table table-bordered">
@@ -132,11 +138,12 @@
                             <tbody>
                                 <tr>
 									<td>
-                                        <select id="subjectCd" name="subjectCd" class="form-select">
-                                            <option value="" disabled selected>科目</option>
-                                            <option th:each="subjectCd : ${subjectCd}" th:value="${testmodel.subjectCd}" th:text="${testmodel.subjectCd}">科目</option>
+                                        <select id="studentCd" name="studentCd" class="form-select">
+                                            <option value="" disabled selected>学生番号</option>
+                                            <option th:each="studentCd : ${studentCd}" th:value="${studentCd.studentCd}" th:text="${studentCd.studentCd}">学生番号</option>
                                         </select>
-                                    </td>                                    <td>
+                                    </td>                                    
+                                    <td>
                                         <button onclick="document.getElementById('search-results').classList.add('active')">検索する</button>
                                     </td>
                                 </tr>
@@ -148,35 +155,32 @@
           </form>
           </div>
        </div>
-				<div th:if="${students!=null and !students.empty}">
-    <table class="table table-striped mt-5">
-        <thead>
-            <th>入学年度</th>
-            <th>クラス</th>
-            <th>学生番号</th>
-            <th>科目</th>
-            <th>回数</th>
-            <th>点数</th>
-        </thead>
-        <tbody>
-            <tr th:each="student, stat : ${students}" th:object="${testmodel}">
-				<td th:text="${entYear}"></td>
-				<td th:text="${classNum}"></td>
-                <td th:text="*{studentCd}"></td>
-                <td th:text="*{subjectCd}"></td>
-                <td th:text="*{no}"></td>
-                <td th:text="*{point}"></td>
-                
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-		<div th:unless="${students!=null and !students.empty}">
-    		<div class="alert alert-danger mt-5" role="alert">
-        		検索してね
-    		</div>
+	<div class="row justify-content-center"  th:if="${not #lists.isEmpty(studenttest)}">
+            <div class="container mt-4">
+               <table class="table table-bordered">
+					科目: <span th:text="${selectsubjectCd}"></span>
+                    <thead>
+                        <tr>
+                            <th>入学年度</th>
+                            <th>クラス番号</th>
+                            <th>学生番号</th>
+                            <th>学生名</th>
+                            <th>点数</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- 学生の情報を反映 -->
+                        <tr th:each="studenttest : ${studenttest}">
+                            <td th:text="${studenttest.entYear}"></td>
+                            <td th:text="${studenttest.classNum}"></td>
+                            <td th:text="${studenttest.studentCd}"></td>
+                            <td th:text="${studenttest.name}"></td>
+                            <td th:text="${studenttest.point}"></td>
+                        </tr>
+                    </tbody>
+                </table>
 		</div>
+
             </div>
         </div>
     </main>

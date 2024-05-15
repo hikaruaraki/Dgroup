@@ -10,6 +10,7 @@ import team.D.model.TestModel;
 @Repository
 public interface TestRepository extends JpaRepository<TestModel, Long> {
 
-	List<TestModel> findBySchoolCd(String schoolCd);
+    List<TestModel> findBySchoolCd(String schoolCd);
+
 
 }

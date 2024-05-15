@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpServletRequest;
 import team.D.model.StudentModel;
@@ -116,13 +115,49 @@ public class TestController{
 		  
 		//成績参照ページ
 		  @GetMapping("/reference")
-		  public ModelAndView getReferenece(TestModel testmodel,ModelAndView model, @AuthenticationPrincipal TeacherModel teacher) {
-		      String schoolCd = teacher.getSchoolCd();
-		      List<TestModel> students = testService.getAllStudentsBySchoolCd(schoolCd);
-		      model.addObject("students", students);
-		      model.setViewName("test/reference");
-		      model.addObject("testmodel",testmodel);
-		      return model;
+		  public String getAllReference(Model model, @AuthenticationPrincipal TeacherModel teacher, @AuthenticationPrincipal StudentModel student, @AuthenticationPrincipal SubjectModel subject) {
+		      // 学校コード
+	  		  TestModel testmodel = new TestModel();
+ 		      String schoolCd = teacher.getSchoolCd();
+		      List<TestModel> allstudent = testService.getAllStudentsBySchoolCd(schoolCd);
+		      model.addAttribute("tests", allstudent);
+		      model.addAttribute("testmodel",testmodel);
+	
+		      // Studentmodel
+		      List<StudentModel> studentList = studentService.getStudentEntYear(schoolCd);
+		      model.addAttribute("student", studentList);
+		    
+		      // SubjectModel
+		      List<SubjectModel> subjectCd = subjectService.getAllSubjectBySchoolCd(schoolCd);
+		      model.addAttribute("subjectCd", subjectCd);
+		      
+		      System.out.println(testmodel);
+		      return "test/reference";
 		  }
-
+		  
+		  @PostMapping("/reference")
+		  public String getReference(
+		            @RequestParam(name= "entYear" , required = false) Integer entYear,
+		            @RequestParam(name= "classNum" , required = false) String classNum,
+		            @RequestParam(name= "subjectCd" , required = false) String subjectCd,
+		            @RequestParam(name= "studentCd" , required = false) String studentCd,
+		            @RequestParam(name= "point" , required = false) String point,
+		            
+				  Model model) {
+			  System.out.println(entYear);
+			  System.out.println(classNum);
+			  System.out.println(subjectCd);
+			  System.out.println(studentCd);
+			  System.out.println(point);
+			  
+			  
+			  model.addAttribute("studentCd",studentCd);
+			  model.addAttribute("point",point);
+			  model.addAttribute("studenttest",testService.Test(entYear,classNum));
+			  model.addAttribute("selectsubjectCd",subjectCd);
+			  return "test/reference";
+		  }
+		  
+		  
 }
+

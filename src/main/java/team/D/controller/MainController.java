@@ -40,6 +40,7 @@ public class MainController{
 			return "base";
 		}
 	  
+	  //学生情報のページ表示
 	  @GetMapping("/student")
 	  public ModelAndView getAllStudents(ModelAndView model, @AuthenticationPrincipal TeacherModel teacher) {
 	      String schoolCd = teacher.getSchoolCd();
@@ -49,6 +50,7 @@ public class MainController{
 	      return model;
 	  }
 		
+	  //学生検索
 		@PostMapping("/student")
 	    public String getFilteredStudents(
 	            @RequestParam(name= "entYear" , required = false) Integer entYear,

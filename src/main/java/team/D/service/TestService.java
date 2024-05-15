@@ -16,7 +16,7 @@ import team.D.repository.TestRepository;
 
 @Service
 @Transactional
-public class TestService {
+public class TestService{
 
 	@Autowired
 	private TestRepository testrepository;
@@ -84,6 +84,12 @@ public List<TestModel> getTestModelList() {
     public void saveTest(TestModel testModel) {
         testrepository.save(testModel);
     }
+    
+	public List<TestModel> findBySchoolCd(String schoolCd) {
+		return testrepository.findBySchoolCd(schoolCd);
+	}
+
+
 
  }
 

@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import team.D.model.StudentModel;
+import team.D.model.TestModel;
 
 @Repository
 public interface StudentRepository extends JpaRepository<StudentModel, Long> {
@@ -26,6 +27,8 @@ public interface StudentRepository extends JpaRepository<StudentModel, Long> {
 	    List<StudentModel> findByIsAttend(Boolean isAttend);
 
 		List<StudentModel> findBySchoolCd(String schoolCd);
+
+		List<TestModel> findByEntYearAndClassNumAndStudentCd(Integer entYear, String classNum, String studentCd);
 		
 	
 		
